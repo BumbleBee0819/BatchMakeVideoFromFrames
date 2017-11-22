@@ -36,7 +36,8 @@ for i in range(start_vid_index, end_vid_index):
             
     frames.sort(key=lambda f1: int(filter(str.isdigit, f1)))
     
-    
+    # os.chdir(curDir)
+
     # get width and shape
     frame_path = os.path.join(tmpdir, frames[0])
     frame = cv2.imread(frame_path)
