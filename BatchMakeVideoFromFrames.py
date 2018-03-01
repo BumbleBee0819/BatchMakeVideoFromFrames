@@ -5,7 +5,9 @@ Created on Wed Oct 11 18:06:20 2017
 @author: wenyan bi
 """
 
-# subfolders should be named like "vid_1", "vid_2", "vid_3", ...
+# By default:
+# subfolders should be named like "vid1", "vid2", "vid3", ...
+# input should be ".jpg"
 # output video will be stored in the same folder as the frame images.
 
 import cv2
@@ -15,14 +17,14 @@ print(cv2.__version__)
 
 # Changeble parameters:
 start_vid_index = 1
-end_vid_index = 66
+end_vid_index = 4
 
 
-curDir = os.getcwd()
+curDir = os.path.dirname(__file__)
 
 for i in range(start_vid_index, end_vid_index):
     # subfolder prefix
-    prefix = 'vid_' + str(i)
+    prefix = curDir + '/vid' + str(i)
  
     os.chdir(prefix)
     tmpdir = os.getcwd()
@@ -31,7 +33,7 @@ for i in range(start_vid_index, end_vid_index):
     # get ".png" files
     frames = []
     for f in os.listdir(tmpdir):
-        if f.endswith('png'):
+        if f.endswith('jpg'):
             frames.append(f)
             
     frames.sort(key=lambda f1: int(filter(str.isdigit, f1)))
